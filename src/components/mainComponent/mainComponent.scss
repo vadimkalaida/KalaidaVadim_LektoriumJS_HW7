@@ -1,0 +1,56 @@
+.Content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.Buttons {
+  display: flex;
+  margin-bottom: 35px;
+  &-btn1 {
+    width: 150px;
+    height: 50px;
+    color: #000E04;
+    background: #1d9982;
+    font-size: 17px;
+    font-weight: 800;
+    text-transform: uppercase;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  &-btn2 {
+    width: 150px;
+    height: 50px;
+    font-size: 17px;
+    font-weight: 800;
+    border: none;
+    outline: none;
+    color: #150810;
+    background: #FD543F;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    cursor: pointer;
+    font-family: 'Montserrat', 'sans-serif';
+  }
+}
+
+.blockDesign {
+  margin-top: 0;
+  width: 350px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+.greenDesign {
+  background: #1d9982;
+  border: 1px solid #115841;
+}
+
+.redDesign {
+  background: #FB5245;
+  border-radius: 15px;
+  font-family: 'Montserrat', 'sans-serif';
+  border: 1px solid #A43838;
+}
