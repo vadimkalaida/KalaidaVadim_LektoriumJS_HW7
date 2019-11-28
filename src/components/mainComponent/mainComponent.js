@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
+import {Bar} from 'react-chartjs-2'
 import './mainComponent.scss'
+import './ChartComponent.scss'
 
 export default class MainComponent extends Component {
   constructor(props) {
@@ -130,38 +132,47 @@ export default class MainComponent extends Component {
 
   renderApp2() {
     return(
-      <div className={'blockDesign redDesign'}>
-        <h2 className="redDesign-title">Game Developers</h2>
-        <div className="redDesign_buttons">
-          <button className="redDesign-btn" onClick={() => this.renderApp2DeveloperBlockClick1()}>
-            {this.gameDevelopers[0].name}
-          </button>
-          <button className="redDesign-btn" onClick={() => this.renderApp2DeveloperBlockClick2()}>
-            {this.gameDevelopers[1].name}
-          </button>
-          <button className="redDesign-btn" onClick={() => this.renderApp2DeveloperBlockClick3()}>
-            {this.gameDevelopers[2].name}
-          </button>
-        </div>
-        {(this.state.app2GameDevelopersNumber === 1) ? this.renderApp2DeveloperBlock(this.gameDevelopers[0].name, this.gameDevelopers[0].company, this.gameDevelopers[0].occupation, this.gameDevelopers[0].age, this.gameDevelopers[0].id) : null}
-        {(this.state.app2GameDevelopersNumber === 2) ? this.renderApp2DeveloperBlock(this.gameDevelopers[1].name, this.gameDevelopers[1].company, this.gameDevelopers[1].occupation, this.gameDevelopers[1].age, this.gameDevelopers[1].id) : null}
-        {(this.state.app2GameDevelopersNumber === 3) ? this.renderApp2DeveloperBlock(this.gameDevelopers[2].name, this.gameDevelopers[2].company, this.gameDevelopers[2].occupation, this.gameDevelopers[2].age, this.gameDevelopers[2].id) : null}
-        <div className="redDesign_goodDevelopers">
-          {this.gameDevelopers.map((developer, index) => {
-            return(
-              <p className="redDesign_goodDevelopers-name" onClick={() => {this.isGoodDeveloper(developer.isGoodGameDeveloper)}}>
-                {developer.name}
-              </p>
-            )
-          })}
+      <div>
+        <div className={'blockDesign redDesign'}>
+          <h2 className="redDesign-title">Game Developers</h2>
+          <div className="redDesign_buttons">
+            <button className="redDesign-btn" onClick={() => this.renderApp2DeveloperBlockClick1()}>
+              {this.gameDevelopers[0].name}
+            </button>
+            <button className="redDesign-btn" onClick={() => this.renderApp2DeveloperBlockClick2()}>
+              {this.gameDevelopers[1].name}
+            </button>
+            <button className="redDesign-btn" onClick={() => this.renderApp2DeveloperBlockClick3()}>
+              {this.gameDevelopers[2].name}
+            </button>
+          </div>
+          {(this.state.app2GameDevelopersNumber === 1) ? this.renderApp2DeveloperBlock(this.gameDevelopers[0].name, this.gameDevelopers[0].company, this.gameDevelopers[0].occupation, this.gameDevelopers[0].age, this.gameDevelopers[0].id) : null}
+          {(this.state.app2GameDevelopersNumber === 2) ? this.renderApp2DeveloperBlock(this.gameDevelopers[1].name, this.gameDevelopers[1].company, this.gameDevelopers[1].occupation, this.gameDevelopers[1].age, this.gameDevelopers[1].id) : null}
+          {(this.state.app2GameDevelopersNumber === 3) ? this.renderApp2DeveloperBlock(this.gameDevelopers[2].name, this.gameDevelopers[2].company, this.gameDevelopers[2].occupation, this.gameDevelopers[2].age, this.gameDevelopers[2].id) : null}
+          <div className="redDesign_goodDevelopers">
+            {this.gameDevelopers.map((developer, index) => {
+              return(
+                <p className="redDesign_goodDevelopers-name" onClick={() => {this.isGoodDeveloper(developer.isGoodGameDeveloper)}}>
+                  {developer.name}
+                </p>
+              )
+            })}
+          </div>
         </div>
       </div>
+    );
+  }
+
+  bottomMessage = () => {
+    return (
+      <p className={"Content-topText"}>{this.props.myName + ', thanks for test:'})</p>
     );
   }
 
   render() {
     return(
       <div className="Content">
+        {this.bottomMessage()}
         <div className="Buttons">
           <button className="Buttons-btn1" onClick={() => {
             this.setState({app2GameDevelopersNumber : 0});
@@ -180,5 +191,45 @@ export default class MainComponent extends Component {
         {(this.state.appDesignNumber === 2) ? this.renderApp2() : null}
       </div>
     )
+  }
+}
+
+export class ChartComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      chartData: {
+        labels: ['Naughty Dog', 'Rockstar Games', 'Kojima Productions'],
+        datasets: [
+          {
+            label: '',
+            data: [82, 76, 85, 0, 100],
+            backgroundColor: ['#E4162A','#F7A524','#050000'],
+          }
+        ]
+      }
+    }
+  }
+
+  render() {
+    return (
+      <div className="chart">
+        <Bar
+          data = {this.state.chartData}
+          options = {{
+            title: {
+              display: true,
+              text: 'CEO Approval Rating',
+              fontSize: 25
+            },
+            legend : {
+              display: false,
+            }
+          }}
+          width = {400}
+          height = {300}
+        />
+      </div>
+    );
   }
 }

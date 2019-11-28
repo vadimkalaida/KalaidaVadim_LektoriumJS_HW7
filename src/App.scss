@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
 body {
-  background: #000E04;
+  background: linear-gradient(to right, #000E04 40%, #150810 60%);
 }
 
 * {
@@ -20,6 +20,7 @@ body {
     color: $defaultColor;
     font-size: 48px;
     letter-spacing: 1.5px;
+    margin-bottom: 0;
     & span {
       color: #1D9982;
       text-transform: uppercase;
