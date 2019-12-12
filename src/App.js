@@ -1,9 +1,11 @@
 import React from 'react';
 import './App.scss';
-import MainComponent, {ChartComponent} from "./components/mainComponent/mainComponent";
+import MainComponent from "./components/mainComponent/MainComponent";
+import {ChartComponent} from "./components/chartComponent/ChartComponent";
+
+let myName = prompt('What\'s your name?');
 
 function App() {
-  let myName = prompt('What\'s your name?');
   return (
     <div className="App">
       <h1 className="App-title">My <span>React</span> App</h1>
